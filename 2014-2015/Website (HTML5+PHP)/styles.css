@@ -1,0 +1,284 @@
+/*****************************************
+             MAIN BODY CSS               *
+******************************************/ 
+body{
+	background-color: rgb(227,221,211);
+	}
+.btn-primary{
+		background-color: rgb(251, 185, 30);
+	}
+	.container{
+		text-align: center;
+		vertical-align: middle;
+	}
+	.jumbotron{
+		padding: 10px;
+		background-color: #efefef;
+		opacity: .9;
+		max-width: 600px;
+		-moz-opacity: .9;
+	}
+
+.btn-primary:hover{
+		/*
+background-color: rgb(231,29,28);
+		border-color: rgb(66, 66, 58);
+*/
+	}
+#bgPic{
+	margin-top: -150px;
+    max-width: 100%;
+    position: absolute; 
+    z-index: -1;
+	}
+p.index{
+	font-family: Garamond, serif;
+	font-size: medium;
+	padding-left: 30px;
+	padding-right: 30px;
+	}
+	
+
+/*****************************************
+             MAP & EXPLORE               *
+******************************************/ 
+section#cat-splash{
+z-index: 99; width: 100%; height: 100%; position: absolute; background-color: rgb(227,221,211); text-align: center;
+/* display: hidden; visibility: none; opacity: 0; */
+}
+.tour-splsh{
+	width: 100%; z-index: 4; background-color: #fafafa;
+}
+.placesCont{
+	width: 90%; max-height: 300px; overflow-y: auto;
+	
+}
+.panel-heading{
+transition: background-color .5s ease;
+}
+/*
+.panel-heading:hover{
+background-color: rgb(251, 185, 30);
+}
+*/
+
+#modal{
+	margin-top: 100px;
+}
+#customButton{
+	margin: 5px;	
+	white-space: normal;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+#customButton:hover{
+	/* background-color: #428bca */
+	
+}
+#checkboxPadding{
+	padding-left: 3px;
+}
+.chbx{
+	display: inline-block;
+	margin-right: 3px !important;
+}
+
+.list-group{
+	margin-bottom: 0px !important;
+}
+
+#verticalBtn{
+	display: inline !important;
+}
+
+#modalBtn{
+	margin: 5px !important;
+}
+/***************************
+Places Dropdown CSS for Tours    	
+***************************/
+.placeBlob{
+margin: 5px; display: inline-block; font-size: 12px; font-family: arial; line-height: 100%; padding: 5px; height: 90px;
+vertical-align: top;
+}
+.placeBlob:nth-child(even){
+	background-color: #cdcdcd;
+}
+.placeBlob:nth-child(odd){
+	background-color: #fafafa;
+}
+.placeBlob b{
+	display: block; font-size: 15px; font-weight: bold; font-family: arial; font-variant: small-caps; margin-top: 10px;
+	margin-bottom: 3px; line-height: 15px;
+}
+.placeBlob img{
+	margin: 3px; border: 3px solid #0a0a0a; background-color: #fafafa; padding: 3px; width: 75px; float: left;
+}
+@media only screen and (max-device-width: 480px){
+	.placeBlob{
+		width: 100%; margin: 0px;
+	}
+}
+@media only screen and (min-device-width: 540px){
+	.placeBlob{
+		width: 45%;
+	}
+}
+
+#firstHeading{
+font-size:18px; color: #000000; font-weight: bold; font-variant: small-caps; text-transform: none; padding: 0px; margin: 0px 0px 0px 10px; 
+}
+#bodyContent{
+width: 200px; background-color: #efefef; color: #0a0a0a; max-height: 100px; overflow: auto; text-align: left; font-size: 10px; padding: 5px;
+border: 1px dotted #fefefe;}
+#bodyContent::-webkit-scrollbar{
+width: 5px;}
+#bodyContent::-webkit-scrollbar-thumb{
+background-color: rgb(251, 185, 30);
+}
+#bodyContent::-webkit-scrollbar-track{
+background-color: rgb(227,221,211);
+}
+#plcImg{
+width: 100px; height: 100px; float: left; margin: 5px; border: 3px solid #0a0a0a; padding: 3px; background-color: #fafafa;
+}
+#plcAddress{
+font-style: italic; font-size: 12px; font-family: arial;
+}
+
+/************************	
+     Map CSS	
+************************/
+#map-canvas {
+        height: 400px;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        float: none;
+      }
+@media only screen and (max-device-width: 480px){
+	#map-canvas{
+		width: 100%; height: 400px; float: none;
+	}
+}
+
+#mapFloat{
+	float: none !important;
+}
+
+#panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+#directions-panel {
+	max-height: 400px;
+        overflow: auto;
+        background-color: #fafafa;
+      }
+#control {
+        background: #fff;
+        padding: 5px;
+        max-width: 390px;
+        min-width: 200px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        font-size: 10px;
+        font-family: Arial;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        display: none;
+        
+      }
+ #content{
+ 	max-width: 300px;
+	min-width: 200px;		  
+	  }
+@media print {
+        #map-canvas {
+          height: 500px;
+          margin: 0;
+          float: none;
+        }
+
+        #directions-panel {
+          float: none;
+          width: auto;
+        }
+      }
+
+/*****************************************
+      ADMIN + ADMIN LOGIN AREA           *
+******************************************/ 
+#acpForm{
+text-align: center;
+}
+#logInForm{
+border: 1px solid #0a0a0a; width: 402px;
+}
+#acpTitle{
+width: 400px; padding: 5px; background-color: rgb(251, 185, 30); text-align: left; font-size: 15px; font-weight: bold;
+}
+#acpTitle2{
+font-size: 11px; text-align: left; padding: 5px; border-top: 1px solid #cdcdcd; font-style: italic;
+}
+#acpFormC{
+width: 400px; padding: 5px; text-align: center; background-color: #cdcdcd; border-top: 3px double #0a0a0a; font-size: 10px;
+}
+#adminBlock{
+display: none;
+visibility: hidden;
+opacity: 0;
+} 
+#adminControl{
+max-width: 600px; background-color: #cdcdcd; padding: 0px 0px 15px 0px; line-height:  normal;
+}
+#adminControl h1{
+font-size: 25px; background-color: rgb(251, 185, 30); padding: 10px; margin: 0px;
+}
+#adminControl h2{
+font-size: 18px; font-style: italic; margin: 0px; padding: 0px; font-weight: normal; border-bottom: 1px solid #fafafa; max-width: 550px;
+}
+#adminControl h3{
+background-color: #efefef; font-size: 15px; margin: 0px; padding: 0px;
+}
+#adminContent{
+background-color: #fefefe; margin: 0px;
+}
+#mngLoc{
+margin: 5px; padding-top: 10px;
+}
+#locRow{
+border-bottom: 1px solid #cdcdcd;
+}
+#locRow:hover{
+background-color: #cdcdcd;
+}
+#locName{
+width: 300px; text-align: center; font-size: 10px;
+}
+#locLink{
+width: 50px; text-align: center; font-size: 10px;
+}
+#locFields tr{
+border-bottom: 1px solid #cdcdcd;
+}
+#locFields td{
+padding: 5px;
+}
+#locFields select{
+width: 200px; font-size: 9px;
+}
+#locFields input[type="textarea"]{
+width: 200px; font-size: 9px;
+}
+#field{
+width: 150px; font-size: 10px; font-family: arial; text-align: left; font-weight: bold;
+border-right: 1px solid #cdcdcd;
+}
+

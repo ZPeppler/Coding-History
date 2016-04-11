@@ -1,0 +1,7 @@
+Build:
+   g++ invHomo.cpp
+   mv a.out invHomo
+
+Run:
+   ./invHomo
+ bigDFA.txt bigDFA-hom.txt

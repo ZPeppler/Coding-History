@@ -1,0 +1,7 @@
+Build:
+   g++ my_simulator.cpp
+   mv a.out my_simulator
+
+Run:
+   ./my_simulator
+ bigDFA.txt bigDFA-strings.txt

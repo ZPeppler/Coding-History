@@ -1,0 +1,1136 @@
+   1               		.file	"driveCommands.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	setupRightLED
+  18               	setupRightLED:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 8AB1      		in r24,42-32
+  27               	/* epilogue start */
+  28               	.LM3:
+  29 0002 0895      		ret
+  30               	.LFE0:
+  32               	.global	rightLEDOn
+  34               	rightLEDOn:
+  35               	.LFB1:
+  36               	.LM4:
+  37               	/* prologue: function */
+  38               	/* frame size = 0 */
+  39               	/* stack size = 0 */
+  40               	.L__stack_usage = 0
+  41               	.LM5:
+  42 0004 5D98      		cbi 43-32,5
+  43               	/* epilogue start */
+  44               	.LM6:
+  45 0006 0895      		ret
+  46               	.LFE1:
+  48               	.global	rightLEDOff
+  50               	rightLEDOff:
+  51               	.LFB2:
+  52               	.LM7:
+  53               	/* prologue: function */
+  54               	/* frame size = 0 */
+  55               	/* stack size = 0 */
+  56               	.L__stack_usage = 0
+  57               	.LM8:
+  58 0008 5D9A      		sbi 43-32,5
+  59               	/* epilogue start */
+  60               	.LM9:
+  61 000a 0895      		ret
+  62               	.LFE2:
+  64               	.global	setupLeftLED
+  66               	setupLeftLED:
+  67               	.LFB3:
+  68               	.LM10:
+  69               	/* prologue: function */
+  70               	/* frame size = 0 */
+  71               	/* stack size = 0 */
+  72               	.L__stack_usage = 0
+  73               	.LM11:
+  74 000c 8AB1      		in r24,42-32
+  75               	/* epilogue start */
+  76               	.LM12:
+  77 000e 0895      		ret
+  78               	.LFE3:
+  80               	.global	leftLEDOn
+  82               	leftLEDOn:
+  83               	.LFB4:
+  84               	.LM13:
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87               	/* stack size = 0 */
+  88               	.L__stack_usage = 0
+  89               	.LM14:
+  90 0010 5E98      		cbi 43-32,6
+  91               	/* epilogue start */
+  92               	.LM15:
+  93 0012 0895      		ret
+  94               	.LFE4:
+  96               	.global	leftLEDOff
+  98               	leftLEDOff:
+  99               	.LFB5:
+ 100               	.LM16:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	/* stack size = 0 */
+ 104               	.L__stack_usage = 0
+ 105               	.LM17:
+ 106 0014 5E9A      		sbi 43-32,6
+ 107               	/* epilogue start */
+ 108               	.LM18:
+ 109 0016 0895      		ret
+ 110               	.LFE5:
+ 112               	.global	setupTimer
+ 114               	setupTimer:
+ 115               	.LFB6:
+ 116               	.LM19:
+ 117               	/* prologue: function */
+ 118               	/* frame size = 0 */
+ 119               	/* stack size = 0 */
+ 120               	.L__stack_usage = 0
+ 121               	.LM20:
+ 122 0018 1092 8000 		sts 128,__zero_reg__
+ 123               	.LM21:
+ 124 001c 8CE0      		ldi r24,lo8(12)
+ 125 001e 8093 8100 		sts 129,r24
+ 126               	.LM22:
+ 127 0022 87E4      		ldi r24,lo8(71)
+ 128 0024 90E0      		ldi r25,hi8(71)
+ 129 0026 9093 8900 		sts 136+1,r25
+ 130 002a 8093 8800 		sts 136,r24
+ 131               	.LM23:
+ 132 002e 82E0      		ldi r24,lo8(2)
+ 133 0030 8093 6F00 		sts 111,r24
+ 134               	/* epilogue start */
+ 135               	.LM24:
+ 136 0034 0895      		ret
+ 137               	.LFE6:
+ 139               	.global	delayMs
+ 141               	delayMs:
+ 142               	.LFB7:
+ 143               	.LM25:
+ 144               	.LVL0:
+ 145               	/* prologue: function */
+ 146               	/* frame size = 0 */
+ 147               	/* stack size = 0 */
+ 148               	.L__stack_usage = 0
+ 149               	.LM26:
+ 150 0036 9093 0000 		sts timerCount+1,r25
+ 151 003a 8093 0000 		sts timerCount,r24
+ 152               	.LM27:
+ 153 003e 81E0      		ldi r24,lo8(1)
+ 154               	.LVL1:
+ 155 0040 8093 0000 		sts timerRunning,r24
+ 156               	.L9:
+ 157               	.LM28:
+ 158 0044 8091 0000 		lds r24,timerRunning
+ 159 0048 8823      		tst r24
+ 160 004a 01F4      		brne .L9
+ 161               	/* epilogue start */
+ 162               	.LM29:
+ 163 004c 0895      		ret
+ 164               	.LFE7:
+ 166               	.global	__vector_11
+ 168               	__vector_11:
+ 169               	.LFB8:
+ 170               	.LM30:
+ 171 004e 1F92      		push __zero_reg__
+ 172 0050 0F92      		push r0
+ 173 0052 0FB6      		in r0,__SREG__
+ 174 0054 0F92      		push r0
+ 175 0056 1124      		clr __zero_reg__
+ 176 0058 8F93      		push r24
+ 177 005a 9F93      		push r25
+ 178               	/* prologue: Signal */
+ 179               	/* frame size = 0 */
+ 180               	/* stack size = 5 */
+ 181               	.L__stack_usage = 5
+ 182               	.LM31:
+ 183 005c 8091 0000 		lds r24,timerRunning
+ 184 0060 8823      		tst r24
+ 185 0062 01F0      		breq .L12
+ 186               	.LM32:
+ 187 0064 8091 0000 		lds r24,timerCount
+ 188 0068 9091 0000 		lds r25,timerCount+1
+ 189 006c 0097      		sbiw r24,0
+ 190 006e 01F0      		breq .L13
+ 191               	.LM33:
+ 192 0070 8091 0000 		lds r24,timerCount
+ 193 0074 9091 0000 		lds r25,timerCount+1
+ 194 0078 0197      		sbiw r24,1
+ 195 007a 9093 0000 		sts timerCount+1,r25
+ 196 007e 8093 0000 		sts timerCount,r24
+ 197 0082 00C0      		rjmp .L12
+ 198               	.L13:
+ 199               	.LM34:
+ 200 0084 1092 0000 		sts timerRunning,__zero_reg__
+ 201               	.L12:
+ 202               	.LM35:
+ 203 0088 8091 0000 		lds r24,responseTimer
+ 204 008c 9091 0000 		lds r25,responseTimer+1
+ 205 0090 0097      		sbiw r24,0
+ 206 0092 01F0      		breq .L11
+ 207               	.LM36:
+ 208 0094 8091 0000 		lds r24,responseTimer
+ 209 0098 9091 0000 		lds r25,responseTimer+1
+ 210 009c 0197      		sbiw r24,1
+ 211 009e 9093 0000 		sts responseTimer+1,r25
+ 212 00a2 8093 0000 		sts responseTimer,r24
+ 213               	.L11:
+ 214               	/* epilogue start */
+ 215               	.LM37:
+ 216 00a6 9F91      		pop r25
+ 217 00a8 8F91      		pop r24
+ 218 00aa 0F90      		pop r0
+ 219 00ac 0FBE      		out __SREG__,r0
+ 220 00ae 0F90      		pop r0
+ 221 00b0 1F90      		pop __zero_reg__
+ 222 00b2 1895      		reti
+ 223               	.LFE8:
+ 225               	.global	setupSerialPort
+ 227               	setupSerialPort:
+ 228               	.LFB9:
+ 229               	.LM38:
+ 230               	/* prologue: function */
+ 231               	/* frame size = 0 */
+ 232               	/* stack size = 0 */
+ 233               	.L__stack_usage = 0
+ 234               	.LM39:
+ 235 00b4 83E1      		ldi r24,lo8(19)
+ 236 00b6 90E0      		ldi r25,hi8(19)
+ 237 00b8 9093 C500 		sts 196+1,r25
+ 238 00bc 8093 C400 		sts 196,r24
+ 239               	.LM40:
+ 240 00c0 88E1      		ldi r24,lo8(24)
+ 241 00c2 8093 C100 		sts 193,r24
+ 242               	.LM41:
+ 243 00c6 86E0      		ldi r24,lo8(6)
+ 244 00c8 8093 C200 		sts 194,r24
+ 245               	/* epilogue start */
+ 246               	.LM42:
+ 247 00cc 0895      		ret
+ 248               	.LFE9:
+ 250               	.global	byteTx
+ 252               	byteTx:
+ 253               	.LFB10:
+ 254               	.LM43:
+ 255               	/* prologue: function */
+ 256               	/* frame size = 0 */
+ 257               	/* stack size = 0 */
+ 258               	.L__stack_usage = 0
+ 259               	.LVL2:
+ 260               	.L17:
+ 261               	.LM44:
+ 262 00ce 9091 C000 		lds r25,192
+ 263 00d2 95FF      		sbrs r25,5
+ 264 00d4 00C0      		rjmp .L17
+ 265               	.LM45:
+ 266 00d6 8093 C600 		sts 198,r24
+ 267               	/* epilogue start */
+ 268               	.LM46:
+ 269 00da 0895      		ret
+ 270               	.LFE10:
+ 272               	.global	byteRx
+ 274               	byteRx:
+ 275               	.LFB11:
+ 276               	.LM47:
+ 277               	/* prologue: function */
+ 278               	/* frame size = 0 */
+ 279               	/* stack size = 0 */
+ 280               	.L__stack_usage = 0
+ 281               	.L20:
+ 282               	.LM48:
+ 283 00dc 8091 C000 		lds r24,192
+ 284 00e0 87FF      		sbrs r24,7
+ 285 00e2 00C0      		rjmp .L20
+ 286               	.LM49:
+ 287 00e4 8091 C600 		lds r24,198
+ 288               	/* epilogue start */
+ 289               	.LM50:
+ 290 00e8 0895      		ret
+ 291               	.LFE11:
+ 293               	.global	byteRx16
+ 295               	byteRx16:
+ 296               	.LFB12:
+ 297               	.LM51:
+ 298 00ea 1F93      		push r17
+ 299               	/* prologue: function */
+ 300               	/* frame size = 0 */
+ 301               	/* stack size = 1 */
+ 302               	.L__stack_usage = 1
+ 303               	.LM52:
+ 304 00ec 0E94 0000 		call byteRx
+ 305 00f0 182F      		mov r17,r24
+ 306 00f2 0E94 0000 		call byteRx
+ 307 00f6 512F      		mov r21,r17
+ 308 00f8 40E0      		ldi r20,lo8(0)
+ 309 00fa 282F      		mov r18,r24
+ 310 00fc 30E0      		ldi r19,lo8(0)
+ 311 00fe 242B      		or r18,r20
+ 312 0100 352B      		or r19,r21
+ 313               	.LM53:
+ 314 0102 C901      		movw r24,r18
+ 315               	/* epilogue start */
+ 316 0104 1F91      		pop r17
+ 317 0106 0895      		ret
+ 318               	.LFE12:
+ 320               	.global	driveStraight
+ 322               	driveStraight:
+ 323               	.LFB13:
+ 324               	.LM54:
+ 325               	.LVL3:
+ 326 0108 1F93      		push r17
+ 327               	/* prologue: function */
+ 328               	/* frame size = 0 */
+ 329               	/* stack size = 1 */
+ 330               	.L__stack_usage = 1
+ 331 010a 182F      		mov r17,r24
+ 332               	.LM55:
+ 333 010c 89E8      		ldi r24,lo8(-119)
+ 334               	.LVL4:
+ 335 010e 0E94 0000 		call byteTx
+ 336               	.LM56:
+ 337 0112 80E0      		ldi r24,lo8(0)
+ 338 0114 0E94 0000 		call byteTx
+ 339               	.LM57:
+ 340 0118 812F      		mov r24,r17
+ 341 011a 0E94 0000 		call byteTx
+ 342               	.LM58:
+ 343 011e 80E8      		ldi r24,lo8(-128)
+ 344 0120 0E94 0000 		call byteTx
+ 345               	.LM59:
+ 346 0124 80E0      		ldi r24,lo8(0)
+ 347 0126 0E94 0000 		call byteTx
+ 348               	/* epilogue start */
+ 349               	.LM60:
+ 350 012a 1F91      		pop r17
+ 351               	.LVL5:
+ 352 012c 0895      		ret
+ 353               	.LFE13:
+ 355               	.global	stop
+ 357               	stop:
+ 358               	.LFB14:
+ 359               	.LM61:
+ 360               	/* prologue: function */
+ 361               	/* frame size = 0 */
+ 362               	/* stack size = 0 */
+ 363               	.L__stack_usage = 0
+ 364               	.LM62:
+ 365 012e 89E8      		ldi r24,lo8(-119)
+ 366 0130 0E94 0000 		call byteTx
+ 367               	.LM63:
+ 368 0134 80E0      		ldi r24,lo8(0)
+ 369 0136 0E94 0000 		call byteTx
+ 370               	.LM64:
+ 371 013a 80E0      		ldi r24,lo8(0)
+ 372 013c 0E94 0000 		call byteTx
+ 373               	.LM65:
+ 374 0140 80E0      		ldi r24,lo8(0)
+ 375 0142 0E94 0000 		call byteTx
+ 376               	.LM66:
+ 377 0146 80E0      		ldi r24,lo8(0)
+ 378 0148 0E94 0000 		call byteTx
+ 379               	/* epilogue start */
+ 380               	.LM67:
+ 381 014c 0895      		ret
+ 382               	.LFE14:
+ 384               	.global	turnClockwise
+ 386               	turnClockwise:
+ 387               	.LFB15:
+ 388               	.LM68:
+ 389               	.LVL6:
+ 390 014e 1F93      		push r17
+ 391               	/* prologue: function */
+ 392               	/* frame size = 0 */
+ 393               	/* stack size = 1 */
+ 394               	.L__stack_usage = 1
+ 395 0150 182F      		mov r17,r24
+ 396               	.LM69:
+ 397 0152 89E8      		ldi r24,lo8(-119)
+ 398               	.LVL7:
+ 399 0154 0E94 0000 		call byteTx
+ 400               	.LM70:
+ 401 0158 80E0      		ldi r24,lo8(0)
+ 402 015a 0E94 0000 		call byteTx
+ 403               	.LM71:
+ 404 015e 812F      		mov r24,r17
+ 405 0160 0E94 0000 		call byteTx
+ 406               	.LM72:
+ 407 0164 8FEF      		ldi r24,lo8(-1)
+ 408 0166 0E94 0000 		call byteTx
+ 409               	.LM73:
+ 410 016a 8FEF      		ldi r24,lo8(-1)
+ 411 016c 0E94 0000 		call byteTx
+ 412               	/* epilogue start */
+ 413               	.LM74:
+ 414 0170 1F91      		pop r17
+ 415               	.LVL8:
+ 416 0172 0895      		ret
+ 417               	.LFE15:
+ 419               	.global	turnCounterClockwise
+ 421               	turnCounterClockwise:
+ 422               	.LFB16:
+ 423               	.LM75:
+ 424               	.LVL9:
+ 425 0174 1F93      		push r17
+ 426               	/* prologue: function */
+ 427               	/* frame size = 0 */
+ 428               	/* stack size = 1 */
+ 429               	.L__stack_usage = 1
+ 430 0176 182F      		mov r17,r24
+ 431               	.LM76:
+ 432 0178 89E8      		ldi r24,lo8(-119)
+ 433               	.LVL10:
+ 434 017a 0E94 0000 		call byteTx
+ 435               	.LM77:
+ 436 017e 80E0      		ldi r24,lo8(0)
+ 437 0180 0E94 0000 		call byteTx
+ 438               	.LM78:
+ 439 0184 812F      		mov r24,r17
+ 440 0186 0E94 0000 		call byteTx
+ 441               	.LM79:
+ 442 018a 80E0      		ldi r24,lo8(0)
+ 443 018c 0E94 0000 		call byteTx
+ 444               	.LM80:
+ 445 0190 81E0      		ldi r24,lo8(1)
+ 446 0192 0E94 0000 		call byteTx
+ 447               	/* epilogue start */
+ 448               	.LM81:
+ 449 0196 1F91      		pop r17
+ 450               	.LVL11:
+ 451 0198 0895      		ret
+ 452               	.LFE16:
+ 454               	.global	waitTime
+ 456               	waitTime:
+ 457               	.LFB17:
+ 458               	.LM82:
+ 459               	.LVL12:
+ 460 019a 1F93      		push r17
+ 461               	/* prologue: function */
+ 462               	/* frame size = 0 */
+ 463               	/* stack size = 1 */
+ 464               	.L__stack_usage = 1
+ 465 019c 182F      		mov r17,r24
+ 466               	.LM83:
+ 467 019e 8BE9      		ldi r24,lo8(-101)
+ 468               	.LVL13:
+ 469 01a0 0E94 0000 		call byteTx
+ 470               	.LM84:
+ 471 01a4 812F      		mov r24,r17
+ 472 01a6 0E94 0000 		call byteTx
+ 473               	/* epilogue start */
+ 474               	.LM85:
+ 475 01aa 1F91      		pop r17
+ 476               	.LVL14:
+ 477 01ac 0895      		ret
+ 478               	.LFE17:
+ 480               	.global	waitEvent
+ 482               	waitEvent:
+ 483               	.LFB18:
+ 484               	.LM86:
+ 485               	.LVL15:
+ 486 01ae 1F93      		push r17
+ 487               	/* prologue: function */
+ 488               	/* frame size = 0 */
+ 489               	/* stack size = 1 */
+ 490               	.L__stack_usage = 1
+ 491 01b0 182F      		mov r17,r24
+ 492               	.LM87:
+ 493 01b2 8EE9      		ldi r24,lo8(-98)
+ 494               	.LVL16:
+ 495 01b4 0E94 0000 		call byteTx
+ 496               	.LM88:
+ 497 01b8 812F      		mov r24,r17
+ 498 01ba 0E94 0000 		call byteTx
+ 499               	/* epilogue start */
+ 500               	.LM89:
+ 501 01be 1F91      		pop r17
+ 502               	.LVL17:
+ 503 01c0 0895      		ret
+ 504               	.LFE18:
+ 506               	.global	driveStraightTime
+ 508               	driveStraightTime:
+ 509               	.LFB19:
+ 510               	.LM90:
+ 511               	.LVL18:
+ 512 01c2 CF93      		push r28
+ 513 01c4 DF93      		push r29
+ 514               	/* prologue: function */
+ 515               	/* frame size = 0 */
+ 516               	/* stack size = 2 */
+ 517               	.L__stack_usage = 2
+ 518 01c6 EB01      		movw r28,r22
+ 519               	.LM91:
+ 520 01c8 0E94 0000 		call driveStraight
+ 521               	.LVL19:
+ 522               	.LM92:
+ 523 01cc CE01      		movw r24,r28
+ 524 01ce 0E94 0000 		call delayMs
+ 525               	/* epilogue start */
+ 526               	.LM93:
+ 527 01d2 DF91      		pop r29
+ 528 01d4 CF91      		pop r28
+ 529               	.LVL20:
+ 530 01d6 0895      		ret
+ 531               	.LFE19:
+ 533               	.global	turnCCWTime
+ 535               	turnCCWTime:
+ 536               	.LFB20:
+ 537               	.LM94:
+ 538               	.LVL21:
+ 539 01d8 CF93      		push r28
+ 540 01da DF93      		push r29
+ 541               	/* prologue: function */
+ 542               	/* frame size = 0 */
+ 543               	/* stack size = 2 */
+ 544               	.L__stack_usage = 2
+ 545 01dc EB01      		movw r28,r22
+ 546               	.LM95:
+ 547 01de 0E94 0000 		call turnCounterClockwise
+ 548               	.LVL22:
+ 549               	.LM96:
+ 550 01e2 CE01      		movw r24,r28
+ 551 01e4 0E94 0000 		call delayMs
+ 552               	/* epilogue start */
+ 553               	.LM97:
+ 554 01e8 DF91      		pop r29
+ 555 01ea CF91      		pop r28
+ 556               	.LVL23:
+ 557 01ec 0895      		ret
+ 558               	.LFE20:
+ 560               	.global	turnCWTime
+ 562               	turnCWTime:
+ 563               	.LFB21:
+ 564               	.LM98:
+ 565               	.LVL24:
+ 566 01ee CF93      		push r28
+ 567 01f0 DF93      		push r29
+ 568               	/* prologue: function */
+ 569               	/* frame size = 0 */
+ 570               	/* stack size = 2 */
+ 571               	.L__stack_usage = 2
+ 572 01f2 EB01      		movw r28,r22
+ 573               	.LM99:
+ 574 01f4 0E94 0000 		call turnClockwise
+ 575               	.LVL25:
+ 576               	.LM100:
+ 577 01f8 CE01      		movw r24,r28
+ 578 01fa 0E94 0000 		call delayMs
+ 579               	/* epilogue start */
+ 580               	.LM101:
+ 581 01fe DF91      		pop r29
+ 582 0200 CF91      		pop r28
+ 583               	.LVL26:
+ 584 0202 0895      		ret
+ 585               	.LFE21:
+ 587               	.global	setSerialDestination
+ 589               	setSerialDestination:
+ 590               	.LFB22:
+ 591               	.LM102:
+ 592               	.LVL27:
+ 593 0204 1F93      		push r17
+ 594               	/* prologue: function */
+ 595               	/* frame size = 0 */
+ 596               	/* stack size = 1 */
+ 597               	.L__stack_usage = 1
+ 598 0206 182F      		mov r17,r24
+ 599               	.LM103:
+ 600 0208 8AE0      		ldi r24,lo8(10)
+ 601 020a 90E0      		ldi r25,hi8(10)
+ 602               	.LVL28:
+ 603 020c 0E94 0000 		call delayMs
+ 604               	.LM104:
+ 605 0210 1130      		cpi r17,lo8(1)
+ 606 0212 01F4      		brne .L33
+ 607               	.LM105:
+ 608 0214 2C98      		cbi 37-32,4
+ 609 0216 00C0      		rjmp .L34
+ 610               	.L33:
+ 611               	.LM106:
+ 612 0218 2C9A      		sbi 37-32,4
+ 613               	.L34:
+ 614               	.LM107:
+ 615 021a 8AE0      		ldi r24,lo8(10)
+ 616 021c 90E0      		ldi r25,hi8(10)
+ 617 021e 0E94 0000 		call delayMs
+ 618               	/* epilogue start */
+ 619               	.LM108:
+ 620 0222 1F91      		pop r17
+ 621               	.LVL29:
+ 622 0224 0895      		ret
+ 623               	.LFE22:
+ 625               	.global	bumpTrigger
+ 627               	bumpTrigger:
+ 628               	.LFB23:
+ 629               	.LM109:
+ 630               	/* prologue: function */
+ 631               	/* frame size = 0 */
+ 632               	/* stack size = 0 */
+ 633               	.L__stack_usage = 0
+ 634               	.LM110:
+ 635 0226 8EE8      		ldi r24,lo8(-114)
+ 636 0228 0E94 0000 		call byteTx
+ 637               	.LM111:
+ 638 022c 87E0      		ldi r24,lo8(7)
+ 639 022e 0E94 0000 		call byteTx
+ 640               	.LM112:
+ 641 0232 0E94 0000 		call byteRx
+ 642               	.LVL30:
+ 643               	.LM113:
+ 644 0236 80FD      		sbrc r24,0
+ 645 0238 00C0      		rjmp .L38
+ 646               	.LM114:
+ 647 023a 21E0      		ldi r18,lo8(1)
+ 648 023c 30E0      		ldi r19,hi8(1)
+ 649 023e 81FD      		sbrc r24,1
+ 650 0240 00C0      		rjmp .L36
+ 651 0242 20E0      		ldi r18,lo8(0)
+ 652 0244 30E0      		ldi r19,hi8(0)
+ 653 0246 00C0      		rjmp .L36
+ 654               	.L38:
+ 655               	.LM115:
+ 656 0248 21E0      		ldi r18,lo8(1)
+ 657 024a 30E0      		ldi r19,hi8(1)
+ 658               	.L36:
+ 659               	.LM116:
+ 660 024c C901      		movw r24,r18
+ 661               	.LVL31:
+ 662               	/* epilogue start */
+ 663 024e 0895      		ret
+ 664               	.LFE23:
+ 666               	.global	cliffTrigger
+ 668               	cliffTrigger:
+ 669               	.LFB24:
+ 670               	.LM117:
+ 671 0250 FF92      		push r15
+ 672 0252 0F93      		push r16
+ 673 0254 1F93      		push r17
+ 674               	/* prologue: function */
+ 675               	/* frame size = 0 */
+ 676               	/* stack size = 3 */
+ 677               	.L__stack_usage = 3
+ 678               	.LM118:
+ 679 0256 8EE8      		ldi r24,lo8(-114)
+ 680 0258 0E94 0000 		call byteTx
+ 681               	.LM119:
+ 682 025c 89E0      		ldi r24,lo8(9)
+ 683 025e 0E94 0000 		call byteTx
+ 684               	.LM120:
+ 685 0262 0E94 0000 		call byteRx
+ 686 0266 082F      		mov r16,r24
+ 687               	.LVL32:
+ 688               	.LM121:
+ 689 0268 8EE8      		ldi r24,lo8(-114)
+ 690               	.LVL33:
+ 691 026a 0E94 0000 		call byteTx
+ 692               	.LM122:
+ 693 026e 8AE0      		ldi r24,lo8(10)
+ 694 0270 0E94 0000 		call byteTx
+ 695               	.LM123:
+ 696 0274 0E94 0000 		call byteRx
+ 697 0278 F82E      		mov r15,r24
+ 698               	.LVL34:
+ 699               	.LM124:
+ 700 027a 8EE8      		ldi r24,lo8(-114)
+ 701               	.LVL35:
+ 702 027c 0E94 0000 		call byteTx
+ 703               	.LM125:
+ 704 0280 8BE0      		ldi r24,lo8(11)
+ 705 0282 0E94 0000 		call byteTx
+ 706               	.LM126:
+ 707 0286 0E94 0000 		call byteRx
+ 708 028a 182F      		mov r17,r24
+ 709               	.LVL36:
+ 710               	.LM127:
+ 711 028c 8EE8      		ldi r24,lo8(-114)
+ 712               	.LVL37:
+ 713 028e 0E94 0000 		call byteTx
+ 714               	.LM128:
+ 715 0292 8CE0      		ldi r24,lo8(12)
+ 716 0294 0E94 0000 		call byteTx
+ 717               	.LM129:
+ 718 0298 0E94 0000 		call byteRx
+ 719               	.LVL38:
+ 720               	.LM130:
+ 721 029c 0F29      		or r16,r15
+ 722               	.LVL39:
+ 723 029e 012B      		or r16,r17
+ 724               	.LM131:
+ 725 02a0 802B      		or r24,r16
+ 726               	.LVL40:
+ 727 02a2 90E0      		ldi r25,lo8(0)
+ 728               	/* epilogue start */
+ 729 02a4 1F91      		pop r17
+ 730               	.LVL41:
+ 731 02a6 0F91      		pop r16
+ 732 02a8 FF90      		pop r15
+ 733               	.LVL42:
+ 734 02aa 0895      		ret
+ 735               	.LFE24:
+ 737               	.global	dropTrigger
+ 739               	dropTrigger:
+ 740               	.LFB25:
+ 741               	.LM132:
+ 742               	/* prologue: function */
+ 743               	/* frame size = 0 */
+ 744               	/* stack size = 0 */
+ 745               	.L__stack_usage = 0
+ 746               	.LM133:
+ 747 02ac 8EE8      		ldi r24,lo8(-114)
+ 748 02ae 0E94 0000 		call byteTx
+ 749               	.LM134:
+ 750 02b2 87E0      		ldi r24,lo8(7)
+ 751 02b4 0E94 0000 		call byteTx
+ 752               	.LM135:
+ 753 02b8 0E94 0000 		call byteRx
+ 754               	.LVL43:
+ 755               	.LM136:
+ 756 02bc 90E0      		ldi r25,lo8(0)
+ 757               	.LM137:
+ 758 02be 9C01      		movw r18,r24
+ 759 02c0 2C70      		andi r18,lo8(12)
+ 760 02c2 3070      		andi r19,hi8(12)
+ 761               	.LM138:
+ 762 02c4 2115      		cp r18,__zero_reg__
+ 763 02c6 3105      		cpc r19,__zero_reg__
+ 764 02c8 01F4      		brne .L43
+ 765               	.LM139:
+ 766 02ca 21E0      		ldi r18,lo8(1)
+ 767 02cc 30E0      		ldi r19,hi8(1)
+ 768 02ce 84FD      		sbrc r24,4
+ 769 02d0 00C0      		rjmp .L41
+ 770 02d2 20E0      		ldi r18,lo8(0)
+ 771 02d4 30E0      		ldi r19,hi8(0)
+ 772 02d6 00C0      		rjmp .L41
+ 773               	.L43:
+ 774               	.LM140:
+ 775 02d8 21E0      		ldi r18,lo8(1)
+ 776 02da 30E0      		ldi r19,hi8(1)
+ 777               	.L41:
+ 778               	.LM141:
+ 779 02dc C901      		movw r24,r18
+ 780               	.LVL44:
+ 781               	/* epilogue start */
+ 782 02de 0895      		ret
+ 783               	.LFE25:
+ 785               	.global	getRemote
+ 787               	getRemote:
+ 788               	.LFB26:
+ 789               	.LM142:
+ 790               	/* prologue: function */
+ 791               	/* frame size = 0 */
+ 792               	/* stack size = 0 */
+ 793               	.L__stack_usage = 0
+ 794               	.LM143:
+ 795 02e0 8EE8      		ldi r24,lo8(-114)
+ 796 02e2 0E94 0000 		call byteTx
+ 797               	.LM144:
+ 798 02e6 81E1      		ldi r24,lo8(17)
+ 799 02e8 0E94 0000 		call byteTx
+ 800               	.LM145:
+ 801 02ec 0E94 0000 		call byteRx
+ 802               	.LM146:
+ 803 02f0 90E0      		ldi r25,lo8(0)
+ 804               	/* epilogue start */
+ 805 02f2 0895      		ret
+ 806               	.LFE26:
+ 808               	.global	print
+ 810               	print:
+ 811               	.LFB29:
+ 812               	.LM147:
+ 813               	.LVL45:
+ 814 02f4 EF92      		push r14
+ 815 02f6 FF92      		push r15
+ 816 02f8 CF93      		push r28
+ 817 02fa DF93      		push r29
+ 818               	/* prologue: function */
+ 819               	/* frame size = 0 */
+ 820               	/* stack size = 4 */
+ 821               	.L__stack_usage = 4
+ 822               	.LVL46:
+ 823               	.LM148:
+ 824 02fc E82E      		mov r14,r24
+ 825 02fe E701      		movw r28,r14
+ 826 0300 7E01      		movw r14,r28
+ 827 0302 F92E      		mov r15,r25
+ 828 0304 E701      		movw r28,r14
+ 829               	.LM149:
+ 830 0306 00C0      		rjmp .L46
+ 831               	.LVL47:
+ 832               	.L47:
+ 833               	.LM150:
+ 834 0308 0E94 0000 		call byteTx
+ 835               	.L46:
+ 836               	.LM151:
+ 837 030c 8991      		ld r24,Y+
+ 838 030e 8823      		tst r24
+ 839 0310 01F4      		brne .L47
+ 840               	.LM152:
+ 841 0312 8AE0      		ldi r24,lo8(10)
+ 842 0314 0E94 0000 		call byteTx
+ 843               	/* epilogue start */
+ 844               	.LM153:
+ 845 0318 DF91      		pop r29
+ 846 031a CF91      		pop r28
+ 847 031c FF90      		pop r15
+ 848 031e EF90      		pop r14
+ 849 0320 0895      		ret
+ 850               	.LFE29:
+ 852               	.global	sendSensors
+ 854               	sendSensors:
+ 855               	.LFB31:
+ 856               	.LM154:
+ 857               	/* prologue: function */
+ 858               	/* frame size = 0 */
+ 859               	/* stack size = 0 */
+ 860               	.L__stack_usage = 0
+ 861               	.LM155:
+ 862 0322 85E9      		ldi r24,lo8(-107)
+ 863 0324 0E94 0000 		call byteTx
+ 864               	.LM156:
+ 865 0328 86E0      		ldi r24,lo8(6)
+ 866 032a 0E94 0000 		call byteTx
+ 867               	.LM157:
+ 868 032e 89E1      		ldi r24,lo8(25)
+ 869 0330 0E94 0000 		call byteTx
+ 870               	.LM158:
+ 871 0334 8BE1      		ldi r24,lo8(27)
+ 872 0336 0E94 0000 		call byteTx
+ 873               	.LM159:
+ 874 033a 8CE1      		ldi r24,lo8(28)
+ 875 033c 0E94 0000 		call byteTx
+ 876               	.LM160:
+ 877 0340 8DE1      		ldi r24,lo8(29)
+ 878 0342 0E94 0000 		call byteTx
+ 879               	.LM161:
+ 880 0346 8EE1      		ldi r24,lo8(30)
+ 881 0348 0E94 0000 		call byteTx
+ 882               	.LM162:
+ 883 034c 8FE1      		ldi r24,lo8(31)
+ 884 034e 0E94 0000 		call byteTx
+ 885               	/* epilogue start */
+ 886               	.LM163:
+ 887 0352 0895      		ret
+ 888               	.LFE31:
+ 890               	.global	getSensors
+ 892               	getSensors:
+ 893               	.LFB32:
+ 894               	.LM164:
+ 895               	.LVL48:
+ 896 0354 6F92      		push r6
+ 897 0356 7F92      		push r7
+ 898 0358 8F92      		push r8
+ 899 035a 9F92      		push r9
+ 900 035c AF92      		push r10
+ 901 035e BF92      		push r11
+ 902 0360 CF92      		push r12
+ 903 0362 DF92      		push r13
+ 904 0364 EF92      		push r14
+ 905 0366 FF92      		push r15
+ 906 0368 0F93      		push r16
+ 907 036a 1F93      		push r17
+ 908 036c CF93      		push r28
+ 909 036e DF93      		push r29
+ 910               	/* prologue: function */
+ 911               	/* frame size = 0 */
+ 912               	/* stack size = 14 */
+ 913               	.L__stack_usage = 14
+ 914 0370 3C01      		movw r6,r24
+ 915 0372 4B01      		movw r8,r22
+ 916 0374 5A01      		movw r10,r20
+ 917 0376 6901      		movw r12,r18
+ 918 0378 E801      		movw r28,r16
+ 919               	.LM165:
+ 920 037a 0E94 0000 		call byteRx16
+ 921               	.LVL49:
+ 922 037e F301      		movw r30,r6
+ 923 0380 9183      		std Z+1,r25
+ 924 0382 8083      		st Z,r24
+ 925               	.LM166:
+ 926 0384 0E94 0000 		call byteRx16
+ 927 0388 F401      		movw r30,r8
+ 928 038a 9183      		std Z+1,r25
+ 929 038c 8083      		st Z,r24
+ 930               	.LM167:
+ 931 038e 0E94 0000 		call byteRx16
+ 932 0392 F501      		movw r30,r10
+ 933 0394 9183      		std Z+1,r25
+ 934 0396 8083      		st Z,r24
+ 935               	.LM168:
+ 936 0398 0E94 0000 		call byteRx16
+ 937 039c F601      		movw r30,r12
+ 938 039e 9183      		std Z+1,r25
+ 939 03a0 8083      		st Z,r24
+ 940               	.LM169:
+ 941 03a2 0E94 0000 		call byteRx16
+ 942 03a6 9983      		std Y+1,r25
+ 943 03a8 8883      		st Y,r24
+ 944               	.LM170:
+ 945 03aa 0E94 0000 		call byteRx16
+ 946 03ae F701      		movw r30,r14
+ 947 03b0 9183      		std Z+1,r25
+ 948 03b2 8083      		st Z,r24
+ 949               	/* epilogue start */
+ 950               	.LM171:
+ 951 03b4 DF91      		pop r29
+ 952 03b6 CF91      		pop r28
+ 953 03b8 1F91      		pop r17
+ 954 03ba 0F91      		pop r16
+ 955               	.LVL50:
+ 956 03bc FF90      		pop r15
+ 957 03be EF90      		pop r14
+ 958               	.LVL51:
+ 959 03c0 DF90      		pop r13
+ 960 03c2 CF90      		pop r12
+ 961               	.LVL52:
+ 962 03c4 BF90      		pop r11
+ 963 03c6 AF90      		pop r10
+ 964               	.LVL53:
+ 965 03c8 9F90      		pop r9
+ 966 03ca 8F90      		pop r8
+ 967               	.LVL54:
+ 968 03cc 7F90      		pop r7
+ 969 03ce 6F90      		pop r6
+ 970               	.LVL55:
+ 971 03d0 0895      		ret
+ 972               	.LFE32:
+ 974               	.global	createRedLED
+ 976               	createRedLED:
+ 977               	.LFB33:
+ 978               	.LM172:
+ 979               	/* prologue: function */
+ 980               	/* frame size = 0 */
+ 981               	/* stack size = 0 */
+ 982               	.L__stack_usage = 0
+ 983               	.LM173:
+ 984 03d2 8BE8      		ldi r24,lo8(-117)
+ 985 03d4 0E94 0000 		call byteTx
+ 986               	.LM174:
+ 987 03d8 80E0      		ldi r24,lo8(0)
+ 988 03da 0E94 0000 		call byteTx
+ 989               	.LM175:
+ 990 03de 8FEF      		ldi r24,lo8(-1)
+ 991 03e0 0E94 0000 		call byteTx
+ 992               	.LM176:
+ 993 03e4 8FEF      		ldi r24,lo8(-1)
+ 994 03e6 0E94 0000 		call byteTx
+ 995               	/* epilogue start */
+ 996               	.LM177:
+ 997 03ea 0895      		ret
+ 998               	.LFE33:
+ 1000               	.global	initialize
+ 1002               	initialize:
+ 1003               	.LFB30:
+ 1004               	.LM178:
+ 1005               	/* prologue: function */
+ 1006               	/* frame size = 0 */
+ 1007               	/* stack size = 0 */
+ 1008               	.L__stack_usage = 0
+ 1009               	.LM179:
+ 1010               	/* #APP */
+ 1011               	 ;  379 "driveCommands.c" 1
+ 1012 03ec F894      		cli
+ 1013               	 ;  0 "" 2
+ 1014               	/* #NOAPP */
+ 1015               	.LBB6:
+ 1016               	.LBB7:
+ 1017               	.LM180:
+ 1018 03ee 8AB1      		in r24,42-32
+ 1019               	.LBE7:
+ 1020               	.LBE6:
+ 1021               	.LBB8:
+ 1022               	.LBB9:
+ 1023               	.LM181:
+ 1024 03f0 8AB1      		in r24,42-32
+ 1025               	.LBE9:
+ 1026               	.LBE8:
+ 1027               	.LM182:
+ 1028 03f2 0E94 0000 		call setupSerialPort
+ 1029               	.LM183:
+ 1030 03f6 0E94 0000 		call setupTimer
+ 1031               	.LM184:
+ 1032               	/* #APP */
+ 1033               	 ;  388 "driveCommands.c" 1
+ 1034 03fa 7894      		sei
+ 1035               	 ;  0 "" 2
+ 1036               	.LM185:
+ 1037               	/* #NOAPP */
+ 1038 03fc 80E8      		ldi r24,lo8(-128)
+ 1039 03fe 0E94 0000 		call byteTx
+ 1040               	.LM186:
+ 1041 0402 84E8      		ldi r24,lo8(-124)
+ 1042 0404 0E94 0000 		call byteTx
+ 1043               	.LM187:
+ 1044 0408 0E94 0000 		call createRedLED
+ 1045               	/* epilogue start */
+ 1046               	.LM188:
+ 1047 040c 0895      		ret
+ 1048               	.LFE30:
+ 1050               	.global	createOrangeLED
+ 1052               	createOrangeLED:
+ 1053               	.LFB34:
+ 1054               	.LM189:
+ 1055               	/* prologue: function */
+ 1056               	/* frame size = 0 */
+ 1057               	/* stack size = 0 */
+ 1058               	.L__stack_usage = 0
+ 1059               	.LM190:
+ 1060 040e 8BE8      		ldi r24,lo8(-117)
+ 1061 0410 0E94 0000 		call byteTx
+ 1062               	.LM191:
+ 1063 0414 80E0      		ldi r24,lo8(0)
+ 1064 0416 0E94 0000 		call byteTx
+ 1065               	.LM192:
+ 1066 041a 88E2      		ldi r24,lo8(40)
+ 1067 041c 0E94 0000 		call byteTx
+ 1068               	.LM193:
+ 1069 0420 8FEF      		ldi r24,lo8(-1)
+ 1070 0422 0E94 0000 		call byteTx
+ 1071               	/* epilogue start */
+ 1072               	.LM194:
+ 1073 0426 0895      		ret
+ 1074               	.LFE34:
+ 1076               	.global	checkTurn
+ 1078               	checkTurn:
+ 1079               	.LFB28:
+ 1080               	.LM195:
+ 1081               	/* prologue: function */
+ 1082               	/* frame size = 0 */
+ 1083               	/* stack size = 0 */
+ 1084               	.L__stack_usage = 0
+ 1085               	.LM196:
+ 1086 0428 0E94 0000 		call dropTrigger
+ 1087 042c 8130      		cpi r24,1
+ 1088 042e 9105      		cpc r25,__zero_reg__
+ 1089 0430 01F4      		brne .L54
+ 1090               	.LM197:
+ 1091 0432 0E94 0000 		call createOrangeLED
+ 1092               	.LM198:
+ 1093 0436 20E0      		ldi r18,lo8(0)
+ 1094 0438 30E0      		ldi r19,hi8(0)
+ 1095 043a 00C0      		rjmp .L55
+ 1096               	.L54:
+ 1097               	.LM199:
+ 1098 043c 0E94 0000 		call createRedLED
+ 1099               	.LM200:
+ 1100 0440 21E0      		ldi r18,lo8(1)
+ 1101 0442 30E0      		ldi r19,hi8(1)
+ 1102               	.L55:
+ 1103               	.LM201:
+ 1104 0444 C901      		movw r24,r18
+ 1105               	/* epilogue start */
+ 1106 0446 0895      		ret
+ 1107               	.LFE28:
+ 1109               	.global	checkForward
+ 1111               	checkForward:
+ 1112               	.LFB27:
+ 1113               	.LM202:
+ 1114               	/* prologue: function */
+ 1115               	/* frame size = 0 */
+ 1116               	/* stack size = 0 */
+ 1117               	.L__stack_usage = 0
+ 1118               	.LM203:
+ 1119 0448 0E94 0000 		call bumpTrigger
+ 1120 044c 0097      		sbiw r24,0
+ 1121 044e 01F4      		brne .L57
+ 1122               	.LM204:
+ 1123 0450 0E94 0000 		call dropTrigger
+ 1124 0454 0097      		sbiw r24,0
+ 1125 0456 01F4      		brne .L57
+ 1126               	.LM205:
+ 1127 0458 0E94 0000 		call cliffTrigger
+ 1128               	.LM206:
+ 1129 045c 0097      		sbiw r24,0
+ 1130 045e 01F4      		brne .L57
+ 1131               	.LM207:
+ 1132 0460 0E94 0000 		call createRedLED
+ 1133               	.LM208:
+ 1134 0464 21E0      		ldi r18,lo8(1)
+ 1135 0466 30E0      		ldi r19,hi8(1)
+ 1136 0468 00C0      		rjmp .L58
+ 1137               	.L57:
+ 1138               	.LM209:
+ 1139 046a 0E94 0000 		call createOrangeLED
+ 1140               	.LM210:
+ 1141 046e 20E0      		ldi r18,lo8(0)
+ 1142 0470 30E0      		ldi r19,hi8(0)
+ 1143               	.L58:
+ 1144               	.LM211:
+ 1145 0472 C901      		movw r24,r18
+ 1146               	/* epilogue start */
+ 1147 0474 0895      		ret
+ 1148               	.LFE27:
+ 1150               	.global	timerCount
+ 1151               	.global	timerCount
+ 1152               		.section .bss
+ 1155               	timerCount:
+ 1156 0000 0000      		.skip 2,0
+ 1157               	.global	timerRunning
+ 1158               	.global	timerRunning
+ 1161               	timerRunning:
+ 1162 0002 00        		.skip 1,0
+ 1163               	.global	responseTimer
+ 1164               		.data
+ 1167               	responseTimer:
+ 1168 0000 E803      		.word	1000
+ 1465               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 driveCommands.c
+     /tmp/ccSoPAXQ.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccSoPAXQ.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccSoPAXQ.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccSoPAXQ.s:5      *ABS*:00000034 __CCP__
+     /tmp/ccSoPAXQ.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccSoPAXQ.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccSoPAXQ.s:18     .text:00000000 setupRightLED
+     /tmp/ccSoPAXQ.s:34     .text:00000004 rightLEDOn
+     /tmp/ccSoPAXQ.s:50     .text:00000008 rightLEDOff
+     /tmp/ccSoPAXQ.s:66     .text:0000000c setupLeftLED
+     /tmp/ccSoPAXQ.s:82     .text:00000010 leftLEDOn
+     /tmp/ccSoPAXQ.s:98     .text:00000014 leftLEDOff
+     /tmp/ccSoPAXQ.s:114    .text:00000018 setupTimer
+     /tmp/ccSoPAXQ.s:141    .text:00000036 delayMs
+     /tmp/ccSoPAXQ.s:1155   .bss:00000000 timerCount
+     /tmp/ccSoPAXQ.s:1161   .bss:00000002 timerRunning
+     /tmp/ccSoPAXQ.s:168    .text:0000004e __vector_11
+     /tmp/ccSoPAXQ.s:1167   .data:00000000 responseTimer
+     /tmp/ccSoPAXQ.s:227    .text:000000b4 setupSerialPort
+     /tmp/ccSoPAXQ.s:252    .text:000000ce byteTx
+     /tmp/ccSoPAXQ.s:274    .text:000000dc byteRx
+     /tmp/ccSoPAXQ.s:295    .text:000000ea byteRx16
+     /tmp/ccSoPAXQ.s:322    .text:00000108 driveStraight
+     /tmp/ccSoPAXQ.s:357    .text:0000012e stop
+     /tmp/ccSoPAXQ.s:386    .text:0000014e turnClockwise
+     /tmp/ccSoPAXQ.s:421    .text:00000174 turnCounterClockwise
+     /tmp/ccSoPAXQ.s:456    .text:0000019a waitTime
+     /tmp/ccSoPAXQ.s:482    .text:000001ae waitEvent
+     /tmp/ccSoPAXQ.s:508    .text:000001c2 driveStraightTime
+     /tmp/ccSoPAXQ.s:535    .text:000001d8 turnCCWTime
+     /tmp/ccSoPAXQ.s:562    .text:000001ee turnCWTime
+     /tmp/ccSoPAXQ.s:589    .text:00000204 setSerialDestination
+     /tmp/ccSoPAXQ.s:627    .text:00000226 bumpTrigger
+     /tmp/ccSoPAXQ.s:668    .text:00000250 cliffTrigger
+     /tmp/ccSoPAXQ.s:739    .text:000002ac dropTrigger
+     /tmp/ccSoPAXQ.s:787    .text:000002e0 getRemote
+     /tmp/ccSoPAXQ.s:810    .text:000002f4 print
+     /tmp/ccSoPAXQ.s:854    .text:00000322 sendSensors
+     /tmp/ccSoPAXQ.s:892    .text:00000354 getSensors
+     /tmp/ccSoPAXQ.s:976    .text:000003d2 createRedLED
+     /tmp/ccSoPAXQ.s:1002   .text:000003ec initialize
+     /tmp/ccSoPAXQ.s:1052   .text:0000040e createOrangeLED
+     /tmp/ccSoPAXQ.s:1078   .text:00000428 checkTurn
+     /tmp/ccSoPAXQ.s:1111   .text:00000448 checkForward
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

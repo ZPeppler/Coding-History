@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>1872db</string>
+			<key>host</key>
+			<string>columbia1872.chir6uoioknn.us-west-2.rds.amazonaws.com</string>
+			<key>kcid</key>
+			<string>3774914072152814207</string>
+			<key>name</key>
+			<string>New Favorite</string>
+			<key>port</key>
+			<integer>3306</integer>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>admin</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClJpZNIeHy0uXxAPTlNN
+			dXRhYmxlU3RyaW5noy0vI1hOU1N0cmluZ9IeHzEyXk5TTXV0YWJs
+			ZUFycmF5ozEzI1dOU0FycmF50h4fIjWiIiNfEA9OU0tleWVkQXJj
+			aGl2ZXLRODlUZGF0YYABAAgAEQAaACMALQAyADcARQBLAFIAWgBl
+			AGwAcAByAHQAdgB6AHwAfgCAAIIAhwCMAJEAugDBAMIAwwDFAMoA
+			1QDeAPQA+AEFAQ4BEwEVARcBGQEeASgBKgEtATIBRAFIAVEBVgFl
+			AWkBcQF2AXkBiwGOAZMAAAAAAAACAQAAAAAAAAA6AAAAAAAAAAAA
+			AAAAAAABlQ==
+			</data>
+			<key>contentSortCol</key>
+			<string>name</string>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1077, 535}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>table</key>
+			<string>categoryNames</string>
+			<key>view</key>
+			<string>SP_VIEW_STRUCTURE</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND places.id = category.places_id</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND places.id = category.places_id AND (category.type_id = "*")</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND places.id = category.places_id AND (category.type_id = *)</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND places.id = category.places_id AND (category.type_id = "1" OR category.type_id = "2")</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND category.type_id = "1" OR category.type_id = "2" AND places.id = category.places_id</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.name
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND category.type_id = "1" AND places.id = category.places_id</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.`name`
+FROM categoryNames, category, places
+Where category.type_id = "1"</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.`name`
+FROM categoryNames, category, places
+Where category.type_id AND category.type_id = "1" AND</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`, places.`name`
+FROM categoryNames, category, places
+Where categoryNames.id = category.type_id AND category.type_id = "1"</string>
+		<string>SELECT categoryNames.name, category.type_id, category.`places_id`
+FROM categoryNames, category
+Where categoryNames.id = category.type_id AND category.type_id = "1"</string>
+		<string>SELECT categoryNames.name, category.type_id
+FROM categoryNames, category
+Where categoryNames.id = category.type_id AND category.type_id = "1"</string>
+		<string>SELECT categoryNames.name, category.type_id
+FROM categoryNames, category
+Where categoryNames.id = category.type_id</string>
+		<string>SELECT categoryNames.name 
+FROM categoryNames
+Where categoryNames.id = "1"</string>
+		<string>SELECT categoryNames.id 
+FROM categoryNames
+Where categoryNames.id = "1"</string>
+		<string>SELECT * FROM categoryNames</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.6.19-log</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

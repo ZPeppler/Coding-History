@@ -1,0 +1,381 @@
+   1               		.file	"project2Task1.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               		.data
+  17               	.LC0:
+  18 0000 5468 6973 		.string	"This is the battery charge: %u"
+  18      2069 7320 
+  18      7468 6520 
+  18      6261 7474 
+  18      6572 7920 
+  19               	.LC1:
+  20 001f 5468 6973 		.string	"This is the wall sensor: %u"
+  20      2069 7320 
+  20      7468 6520 
+  20      7761 6C6C 
+  20      2073 656E 
+  21               	.LC2:
+  22 003b 5468 6973 		.string	"This is the left cliff sensor: %u"
+  22      2069 7320 
+  22      7468 6520 
+  22      6C65 6674 
+  22      2063 6C69 
+  23               	.LC3:
+  24 005d 5468 6973 		.string	"This is the front left cliff sensor: %u"
+  24      2069 7320 
+  24      7468 6520 
+  24      6672 6F6E 
+  24      7420 6C65 
+  25               	.LC4:
+  26 0085 5468 6973 		.string	"This is the front right cliff sensor: %u"
+  26      2069 7320 
+  26      7468 6520 
+  26      6672 6F6E 
+  26      7420 7269 
+  27               	.LC5:
+  28 00ae 5468 6973 		.string	"This is the right cliff sensor: %u"
+  28      2069 7320 
+  28      7468 6520 
+  28      7269 6768 
+  28      7420 636C 
+  29               	.LC6:
+  30 00d1 0A00      		.string	"\n"
+  31               		.text
+  32               	.global	main
+  34               	main:
+  35               	.LFB0:
+  36               	.LM1:
+  37 0000 2F92      		push r2
+  38 0002 3F92      		push r3
+  39 0004 4F92      		push r4
+  40 0006 5F92      		push r5
+  41 0008 6F92      		push r6
+  42 000a 7F92      		push r7
+  43 000c 8F92      		push r8
+  44 000e 9F92      		push r9
+  45 0010 AF92      		push r10
+  46 0012 BF92      		push r11
+  47 0014 CF92      		push r12
+  48 0016 DF92      		push r13
+  49 0018 EF92      		push r14
+  50 001a FF92      		push r15
+  51 001c 0F93      		push r16
+  52 001e 1F93      		push r17
+  53 0020 DF93      		push r29
+  54 0022 CF93      		push r28
+  55 0024 CDB7      		in r28,__SP_L__
+  56 0026 DEB7      		in r29,__SP_H__
+  57 0028 C057      		subi r28,lo8(-(-112))
+  58 002a D040      		sbci r29,hi8(-(-112))
+  59 002c 0FB6      		in __tmp_reg__,__SREG__
+  60 002e F894      		cli
+  61 0030 DEBF      		out __SP_H__,r29
+  62 0032 0FBE      		out __SREG__,__tmp_reg__
+  63 0034 CDBF      		out __SP_L__,r28
+  64               	/* prologue: function */
+  65               	/* frame size = 112 */
+  66               	/* stack size = 130 */
+  67               	.L__stack_usage = 130
+  68               	.LM2:
+  69 0036 0E94 0000 		call initialize
+  70               	.LBB2:
+  71               	.LM3:
+  72 003a 03E0      		ldi r16,lo8(3)
+  73 003c 602E      		mov r6,r16
+  74 003e 712C      		mov r7,__zero_reg__
+  75 0040 6C0E      		add r6,r28
+  76 0042 7D1E      		adc r7,r29
+  77 0044 15E0      		ldi r17,lo8(5)
+  78 0046 412E      		mov r4,r17
+  79 0048 512C      		mov r5,__zero_reg__
+  80 004a 4C0E      		add r4,r28
+  81 004c 5D1E      		adc r5,r29
+  82 004e B7E0      		ldi r27,lo8(7)
+  83 0050 2B2E      		mov r2,r27
+  84 0052 312C      		mov r3,__zero_reg__
+  85 0054 2C0E      		add r2,r28
+  86 0056 3D1E      		adc r3,r29
+  87 0058 A9E0      		ldi r26,lo8(9)
+  88 005a AA2E      		mov r10,r26
+  89 005c B12C      		mov r11,__zero_reg__
+  90 005e AC0E      		add r10,r28
+  91 0060 BD1E      		adc r11,r29
+  92 0062 4E01      		movw r8,r28
+  93 0064 0894      		sec
+  94 0066 811C      		adc r8,__zero_reg__
+  95 0068 911C      		adc r9,__zero_reg__
+  96               	.LM4:
+  97 006a FDE0      		ldi r31,lo8(13)
+  98 006c CF2E      		mov r12,r31
+  99 006e D12C      		mov r13,__zero_reg__
+ 100 0070 CC0E      		add r12,r28
+ 101 0072 DD1E      		adc r13,r29
+ 102               	.LVL0:
+ 103               	.L6:
+ 104               	.LBE2:
+ 105               	.LM5:
+ 106 0074 8091 0000 		lds r24,responseTimer
+ 107 0078 9091 0000 		lds r25,responseTimer+1
+ 108 007c 0097      		sbiw r24,0
+ 109 007e 01F4      		brne .L6
+ 110               	.LBB3:
+ 111               	.LM6:
+ 112 0080 81E0      		ldi r24,lo8(1)
+ 113 0082 0E94 0000 		call setSerialDestination
+ 114               	.LM7:
+ 115 0086 0E94 0000 		call sendSensors
+ 116               	.LM8:
+ 117 008a C401      		movw r24,r8
+ 118 008c B301      		movw r22,r6
+ 119 008e A201      		movw r20,r4
+ 120 0090 9101      		movw r18,r2
+ 121 0092 8501      		movw r16,r10
+ 122 0094 EBE0      		ldi r30,lo8(11)
+ 123 0096 EE2E      		mov r14,r30
+ 124 0098 F12C      		mov r15,__zero_reg__
+ 125 009a EC0E      		add r14,r28
+ 126 009c FD1E      		adc r15,r29
+ 127 009e 0E94 0000 		call getSensors
+ 128               	.LM9:
+ 129 00a2 82E0      		ldi r24,lo8(2)
+ 130 00a4 0E94 0000 		call setSerialDestination
+ 131               	.LM10:
+ 132 00a8 00D0      		rcall .
+ 133 00aa 00D0      		rcall .
+ 134 00ac 00D0      		rcall .
+ 135 00ae EDB7      		in r30,__SP_L__
+ 136 00b0 FEB7      		in r31,__SP_H__
+ 137 00b2 3196      		adiw r30,1
+ 138 00b4 ADB7      		in r26,__SP_L__
+ 139 00b6 BEB7      		in r27,__SP_H__
+ 140 00b8 1296      		adiw r26,1+1
+ 141 00ba DC92      		st X,r13
+ 142 00bc CE92      		st -X,r12
+ 143 00be 1197      		sbiw r26,1
+ 144 00c0 80E0      		ldi r24,lo8(.LC0)
+ 145 00c2 90E0      		ldi r25,hi8(.LC0)
+ 146 00c4 9383      		std Z+3,r25
+ 147 00c6 8283      		std Z+2,r24
+ 148 00c8 8981      		ldd r24,Y+1
+ 149 00ca 9A81      		ldd r25,Y+2
+ 150 00cc 9583      		std Z+5,r25
+ 151 00ce 8483      		std Z+4,r24
+ 152 00d0 0E94 0000 		call sprintf
+ 153               	.LM11:
+ 154 00d4 ADB7      		in r26,__SP_L__
+ 155 00d6 BEB7      		in r27,__SP_H__
+ 156 00d8 1696      		adiw r26,6
+ 157 00da 0FB6      		in __tmp_reg__,__SREG__
+ 158 00dc F894      		cli
+ 159 00de BEBF      		out __SP_H__,r27
+ 160 00e0 0FBE      		out __SREG__,__tmp_reg__
+ 161 00e2 ADBF      		out __SP_L__,r26
+ 162 00e4 C601      		movw r24,r12
+ 163 00e6 0E94 0000 		call print
+ 164               	.LM12:
+ 165 00ea 00D0      		rcall .
+ 166 00ec 00D0      		rcall .
+ 167 00ee 00D0      		rcall .
+ 168 00f0 EDB7      		in r30,__SP_L__
+ 169 00f2 FEB7      		in r31,__SP_H__
+ 170 00f4 3196      		adiw r30,1
+ 171 00f6 ADB7      		in r26,__SP_L__
+ 172 00f8 BEB7      		in r27,__SP_H__
+ 173 00fa 1296      		adiw r26,1+1
+ 174 00fc DC92      		st X,r13
+ 175 00fe CE92      		st -X,r12
+ 176 0100 1197      		sbiw r26,1
+ 177 0102 80E0      		ldi r24,lo8(.LC1)
+ 178 0104 90E0      		ldi r25,hi8(.LC1)
+ 179 0106 9383      		std Z+3,r25
+ 180 0108 8283      		std Z+2,r24
+ 181 010a 8B81      		ldd r24,Y+3
+ 182 010c 9C81      		ldd r25,Y+4
+ 183 010e 9583      		std Z+5,r25
+ 184 0110 8483      		std Z+4,r24
+ 185 0112 0E94 0000 		call sprintf
+ 186               	.LM13:
+ 187 0116 ADB7      		in r26,__SP_L__
+ 188 0118 BEB7      		in r27,__SP_H__
+ 189 011a 1696      		adiw r26,6
+ 190 011c 0FB6      		in __tmp_reg__,__SREG__
+ 191 011e F894      		cli
+ 192 0120 BEBF      		out __SP_H__,r27
+ 193 0122 0FBE      		out __SREG__,__tmp_reg__
+ 194 0124 ADBF      		out __SP_L__,r26
+ 195 0126 C601      		movw r24,r12
+ 196 0128 0E94 0000 		call print
+ 197               	.LM14:
+ 198 012c 00D0      		rcall .
+ 199 012e 00D0      		rcall .
+ 200 0130 00D0      		rcall .
+ 201 0132 EDB7      		in r30,__SP_L__
+ 202 0134 FEB7      		in r31,__SP_H__
+ 203 0136 3196      		adiw r30,1
+ 204 0138 ADB7      		in r26,__SP_L__
+ 205 013a BEB7      		in r27,__SP_H__
+ 206 013c 1296      		adiw r26,1+1
+ 207 013e DC92      		st X,r13
+ 208 0140 CE92      		st -X,r12
+ 209 0142 1197      		sbiw r26,1
+ 210 0144 80E0      		ldi r24,lo8(.LC2)
+ 211 0146 90E0      		ldi r25,hi8(.LC2)
+ 212 0148 9383      		std Z+3,r25
+ 213 014a 8283      		std Z+2,r24
+ 214 014c 8D81      		ldd r24,Y+5
+ 215 014e 9E81      		ldd r25,Y+6
+ 216 0150 9583      		std Z+5,r25
+ 217 0152 8483      		std Z+4,r24
+ 218 0154 0E94 0000 		call sprintf
+ 219               	.LM15:
+ 220 0158 ADB7      		in r26,__SP_L__
+ 221 015a BEB7      		in r27,__SP_H__
+ 222 015c 1696      		adiw r26,6
+ 223 015e 0FB6      		in __tmp_reg__,__SREG__
+ 224 0160 F894      		cli
+ 225 0162 BEBF      		out __SP_H__,r27
+ 226 0164 0FBE      		out __SREG__,__tmp_reg__
+ 227 0166 ADBF      		out __SP_L__,r26
+ 228 0168 C601      		movw r24,r12
+ 229 016a 0E94 0000 		call print
+ 230               	.LM16:
+ 231 016e 00D0      		rcall .
+ 232 0170 00D0      		rcall .
+ 233 0172 00D0      		rcall .
+ 234 0174 EDB7      		in r30,__SP_L__
+ 235 0176 FEB7      		in r31,__SP_H__
+ 236 0178 3196      		adiw r30,1
+ 237 017a ADB7      		in r26,__SP_L__
+ 238 017c BEB7      		in r27,__SP_H__
+ 239 017e 1296      		adiw r26,1+1
+ 240 0180 DC92      		st X,r13
+ 241 0182 CE92      		st -X,r12
+ 242 0184 1197      		sbiw r26,1
+ 243 0186 80E0      		ldi r24,lo8(.LC3)
+ 244 0188 90E0      		ldi r25,hi8(.LC3)
+ 245 018a 9383      		std Z+3,r25
+ 246 018c 8283      		std Z+2,r24
+ 247 018e 8F81      		ldd r24,Y+7
+ 248 0190 9885      		ldd r25,Y+8
+ 249 0192 9583      		std Z+5,r25
+ 250 0194 8483      		std Z+4,r24
+ 251 0196 0E94 0000 		call sprintf
+ 252               	.LM17:
+ 253 019a ADB7      		in r26,__SP_L__
+ 254 019c BEB7      		in r27,__SP_H__
+ 255 019e 1696      		adiw r26,6
+ 256 01a0 0FB6      		in __tmp_reg__,__SREG__
+ 257 01a2 F894      		cli
+ 258 01a4 BEBF      		out __SP_H__,r27
+ 259 01a6 0FBE      		out __SREG__,__tmp_reg__
+ 260 01a8 ADBF      		out __SP_L__,r26
+ 261 01aa C601      		movw r24,r12
+ 262 01ac 0E94 0000 		call print
+ 263               	.LM18:
+ 264 01b0 00D0      		rcall .
+ 265 01b2 00D0      		rcall .
+ 266 01b4 00D0      		rcall .
+ 267 01b6 EDB7      		in r30,__SP_L__
+ 268 01b8 FEB7      		in r31,__SP_H__
+ 269 01ba 3196      		adiw r30,1
+ 270 01bc ADB7      		in r26,__SP_L__
+ 271 01be BEB7      		in r27,__SP_H__
+ 272 01c0 1296      		adiw r26,1+1
+ 273 01c2 DC92      		st X,r13
+ 274 01c4 CE92      		st -X,r12
+ 275 01c6 1197      		sbiw r26,1
+ 276 01c8 80E0      		ldi r24,lo8(.LC4)
+ 277 01ca 90E0      		ldi r25,hi8(.LC4)
+ 278 01cc 9383      		std Z+3,r25
+ 279 01ce 8283      		std Z+2,r24
+ 280 01d0 8985      		ldd r24,Y+9
+ 281 01d2 9A85      		ldd r25,Y+10
+ 282 01d4 9583      		std Z+5,r25
+ 283 01d6 8483      		std Z+4,r24
+ 284 01d8 0E94 0000 		call sprintf
+ 285               	.LM19:
+ 286 01dc ADB7      		in r26,__SP_L__
+ 287 01de BEB7      		in r27,__SP_H__
+ 288 01e0 1696      		adiw r26,6
+ 289 01e2 0FB6      		in __tmp_reg__,__SREG__
+ 290 01e4 F894      		cli
+ 291 01e6 BEBF      		out __SP_H__,r27
+ 292 01e8 0FBE      		out __SREG__,__tmp_reg__
+ 293 01ea ADBF      		out __SP_L__,r26
+ 294 01ec C601      		movw r24,r12
+ 295 01ee 0E94 0000 		call print
+ 296               	.LM20:
+ 297 01f2 00D0      		rcall .
+ 298 01f4 00D0      		rcall .
+ 299 01f6 00D0      		rcall .
+ 300 01f8 EDB7      		in r30,__SP_L__
+ 301 01fa FEB7      		in r31,__SP_H__
+ 302 01fc 3196      		adiw r30,1
+ 303 01fe ADB7      		in r26,__SP_L__
+ 304 0200 BEB7      		in r27,__SP_H__
+ 305 0202 1296      		adiw r26,1+1
+ 306 0204 DC92      		st X,r13
+ 307 0206 CE92      		st -X,r12
+ 308 0208 1197      		sbiw r26,1
+ 309 020a 80E0      		ldi r24,lo8(.LC5)
+ 310 020c 90E0      		ldi r25,hi8(.LC5)
+ 311 020e 9383      		std Z+3,r25
+ 312 0210 8283      		std Z+2,r24
+ 313 0212 8B85      		ldd r24,Y+11
+ 314 0214 9C85      		ldd r25,Y+12
+ 315 0216 9583      		std Z+5,r25
+ 316 0218 8483      		std Z+4,r24
+ 317 021a 0E94 0000 		call sprintf
+ 318               	.LM21:
+ 319 021e ADB7      		in r26,__SP_L__
+ 320 0220 BEB7      		in r27,__SP_H__
+ 321 0222 1696      		adiw r26,6
+ 322 0224 0FB6      		in __tmp_reg__,__SREG__
+ 323 0226 F894      		cli
+ 324 0228 BEBF      		out __SP_H__,r27
+ 325 022a 0FBE      		out __SREG__,__tmp_reg__
+ 326 022c ADBF      		out __SP_L__,r26
+ 327 022e C601      		movw r24,r12
+ 328 0230 0E94 0000 		call print
+ 329               	.LM22:
+ 330 0234 C601      		movw r24,r12
+ 331 0236 60E0      		ldi r22,lo8(.LC6)
+ 332 0238 70E0      		ldi r23,hi8(.LC6)
+ 333 023a 0E94 0000 		call strcpy
+ 334               	.LM23:
+ 335 023e C601      		movw r24,r12
+ 336 0240 0E94 0000 		call print
+ 337               	.LM24:
+ 338 0244 88EE      		ldi r24,lo8(1000)
+ 339 0246 93E0      		ldi r25,hi8(1000)
+ 340 0248 9093 0000 		sts responseTimer+1,r25
+ 341 024c 8093 0000 		sts responseTimer,r24
+ 342 0250 00C0      		rjmp .L6
+ 343               	.LBE3:
+ 344               	.LFE0:
+ 370               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 project2Task1.c
+     /tmp/ccpH6V13.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccpH6V13.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccpH6V13.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccpH6V13.s:5      *ABS*:00000034 __CCP__
+     /tmp/ccpH6V13.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccpH6V13.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccpH6V13.s:34     .text:00000000 main
+
+UNDEFINED SYMBOLS
+initialize
+responseTimer
+setSerialDestination
+sendSensors
+getSensors
+sprintf
+print
+strcpy
+__do_copy_data
